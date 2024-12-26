@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './schema/user.schema';
 import { Model } from 'mongoose';
+import { IFindById, ILogin, ISignup } from './interfaces/user.interface';
 
 @Injectable()
 export class UsersService {
@@ -12,7 +13,13 @@ export class UsersService {
   ) {
 
   }
-  getHello(): string {
-    return 'Hello World!';
+  signup(signupDto: ISignup) {
+    console.log(signupDto)
+  }
+  login(loginDto: ILogin) {
+    console.log(loginDto)
+  }
+  findById(findByIdDto: IFindById) {
+    console.log(findByIdDto)
   }
 }
