@@ -20,6 +20,22 @@ import { ClientProxyFactory, Transport } from '@nestjs/microservices';
         }
       })
     }
-  }],
+  } ,
+  {
+    // This useFactory method creates and returns a TCP client proxy using the ClientProxyFactory. 
+    // A client proxy is typically used in microservices architecture to communicate with other services.
+    // The proxy is configured to communicate over TCP on port 4001 and is accessible on all network interfaces (0.0.0.0).
+    provide : 'TOKEN_SERVICE' ,
+    useFactory(){
+      return ClientProxyFactory.create({
+        transport : Transport.TCP ,
+        options : {
+          port : 4002, 
+          host : '0.0.0.0'
+        }
+      })
+    }
+  }
+],
 })
 export class GatewayModule { }
